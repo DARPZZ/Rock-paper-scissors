@@ -67,8 +67,8 @@ function Game() {
     function emHandCheck(hand : string)
     {
         setResult(enemyHand === hand ? "You win" : "You lose");
-                    setScore((prevScore) => prevScore + (enemyHand === hand ? 1 : 0));
-                    setEnemyScore((prevEnemyScore) => prevEnemyScore + (enemyHand === hand ? 0 : 1));
+        setScore((prevScore) => prevScore + (enemyHand === hand ? 1 : 0));
+        setEnemyScore((prevEnemyScore) => prevEnemyScore + (enemyHand === hand ? 0 : 1));
     }
 
     function checkWinner() {
@@ -77,20 +77,13 @@ function Game() {
         } else {
             switch (youreHand) {
                 case "Rock":
-                    setResult(enemyHand === "Scissors" ? "You win" : "You lose");
-                    setScore((prevScore) => prevScore + (enemyHand === "Scissors" ? 1 : 0));
-                    setEnemyScore((prevEnemyScore) => prevEnemyScore + (enemyHand === "Scissors" ? 0 : 1));
-
+                    emHandCheck("Scissors");
                     break;
                 case "Paper":
-                    setResult(enemyHand === "Rock" ? "You win" : "You lose");
-                    setScore((prevScore) => prevScore + (enemyHand === "Rock" ? 1 : 0));
-                    setEnemyScore((prevEnemyScore) => prevEnemyScore + (enemyHand === "Rock" ? 0 : 1));
+                    emHandCheck("Rock");
                     break;
                 case "Scissors":
-                    setResult(enemyHand === "Paper" ? "You win" : "You lose");
-                    setScore((prevScore) => prevScore + (enemyHand === "Paper" ? 1 : 0));
-                    setEnemyScore((prevEnemyScore) => prevEnemyScore + (enemyHand === "Paper" ? 0 : 1));
+                   emHandCheck("Paper");
                     break;
                 default:
                     setResult("Invalid hand");
