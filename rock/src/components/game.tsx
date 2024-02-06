@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './game.css';
 import rock from '../assets/Skærmbillede 2024-02-05 214423.png';
 import pap from '../assets/hest 2.png';
-import sis from '../assets/hest 1.png';
+import sis from '../assets/sis.png';
 
 function Game() {
     const [youreHand, setYoureHand] = useState("");
@@ -20,13 +20,11 @@ function Game() {
 
     function hånd(handType: string) {
         setYoureHand(handType);
-        test(handType,"you")
-        
-
+        setPictures(handType,"you")
         getEnemyhand();
     }
 
-    function test(handType: string, player: string) {
+    function setPictures(handType: string, player: string) {
         switch (handType) {
             case "Rock":
                 if (player === "you") {
@@ -64,7 +62,13 @@ function Game() {
     function getEnemyhand() {
         const hand = choices[getRandomInt(3)];
         setEnemyHand(hand);
-        test(hand,"enemy")
+        setPictures(hand,"enemy")
+    }
+    function emHandCheck(hand : string)
+    {
+        setResult(enemyHand === hand ? "You win" : "You lose");
+                    setScore((prevScore) => prevScore + (enemyHand === hand ? 1 : 0));
+                    setEnemyScore((prevEnemyScore) => prevEnemyScore + (enemyHand === hand ? 0 : 1));
     }
 
     function checkWinner() {
@@ -73,37 +77,31 @@ function Game() {
         } else {
             switch (youreHand) {
                 case "Rock":
-                    if (enemyHand === "Scissors") {
-                        setResult("You win");
-                        setScore((prevScore) => prevScore + 1);
-                    } else {
-                        setResult("You lose");
-                        setEnemyScore((prevEnemyScore) => prevEnemyScore + 1);
-                    }
+                    setResult(enemyHand === "Scissors" ? "You win" : "You lose");
+                    setScore((prevScore) => prevScore + (enemyHand === "Scissors" ? 1 : 0));
+                    setEnemyScore((prevEnemyScore) => prevEnemyScore + (enemyHand === "Scissors" ? 0 : 1));
+
                     break;
                 case "Paper":
-                    if (enemyHand === "Rock") {
-                        setResult("You win");
-                        setScore((prevScore) => prevScore + 1);
-                    } else {
-                        setResult("You lose");
-                        setEnemyScore((prevEnemyScore) => prevEnemyScore + 1);
-                    }
+                    setResult(enemyHand === "Rock" ? "You win" : "You lose");
+                    setScore((prevScore) => prevScore + (enemyHand === "Rock" ? 1 : 0));
+                    setEnemyScore((prevEnemyScore) => prevEnemyScore + (enemyHand === "Rock" ? 0 : 1));
                     break;
                 case "Scissors":
-                    if (enemyHand === "Paper") {
-                        setResult("You win");
-                        setScore((prevScore) => prevScore + 1);
-                    } else {
-                        setResult("You lose");
-                        setEnemyScore((prevEnemyScore) => prevEnemyScore + 1);
-                    }
+                    setResult(enemyHand === "Paper" ? "You win" : "You lose");
+                    setScore((prevScore) => prevScore + (enemyHand === "Paper" ? 1 : 0));
+                    setEnemyScore((prevEnemyScore) => prevEnemyScore + (enemyHand === "Paper" ? 0 : 1));
                     break;
                 default:
                     setResult("Invalid hand");
                     break;
             }
         }
+    }
+    function resetscore()
+    {
+        setEnemyScore(0);
+        setScore(0);
     }
 
     return (
@@ -114,8 +112,14 @@ function Game() {
                 <input id='papair' type="image" src={pap} alt="Paper" onClick={() => hånd("Paper")} />
             </div>
             <div className='score-container'>
+
                 <label id='score-label' htmlFor="text">Din score: {score}</label>
                 <label id='score-label' htmlFor="text">Modstanders score: {enemyScore}</label>
+                <div className='reset-button'>
+                    <input onClick={resetscore} id='reset-button2' type='button' value={"Reset score "} />
+                </div>
+              
+
             </div>
             <div className='game-board'>
                 <div className='youre-hand'>

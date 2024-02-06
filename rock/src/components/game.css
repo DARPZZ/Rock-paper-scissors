@@ -11,22 +11,23 @@
     display: flex;
     column-gap: 200px;
 }
+
 #sten {
     width: 20%;
     height: 90%;
-    border-radius: 55px;
+    border-radius: 45px;
     padding: 20px;
 }
 #papair {
     width: 20%;
     height: 90%;
-    border-radius: 55px;
+    border-radius: 45px;
     padding: 20px;
 }
 #saks {
     width: 20%;
     height: 90%;
-    border-radius: 55px;
+    border-radius: 45px;
     padding: 20px;
 }
 
@@ -35,11 +36,15 @@
     justify-content: center;
     display: flex;
     bottom: 15%;
+    height: 10%;
+    width: 70%;
     column-gap: 200px;
+    left: 24%;
 }
 #score-label{
     font-weight: bold;
     justify-content: center;
+    height: 50%;
 }
 #hånd-billede{
     border-radius: 55px;
@@ -72,4 +77,18 @@
     left: 44%;
     font-size: 50px;
     width: 20%;
+}
+.reset-button{
+    position: relative;
+    top: 100%;
+    right: 40%;
+    
+}
+#reset-button2{
+    position: relative;
+    width: 300%;
+    bottom: 40%;
+    right:135%;
+    border-radius: 55px;
+    padding: 20px; 
 }
