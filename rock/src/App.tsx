@@ -7,7 +7,7 @@ function App() {
   return (
    <div>
       <Routes>
-          <Route path='/' Component={game}/>
+          <Route path='Rock-paper-scissors' Component={game}/>
         </Routes>
    </div>
   )
