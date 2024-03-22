@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import './game.css';
-import rock from '../assets/Skærmbillede 2024-02-05 214423.png';
-import pap from '../assets/hest 2.png';
-import sis from '../assets/sis.png';
+import rock from '../assets/icons8-rock-hand-48.png';
+import pap from '../assets/icons8-paper-hand-48.png';
+import sis from '../assets/icons8-hand-scissors-skin-type-2-48.png';
 
 function Game() {
     const [youreHand, setYoureHand] = useState("");
@@ -107,7 +107,7 @@ function Game() {
             <div className='score-container'>
 
                 <label id='score-label' htmlFor="text">Din score: {score}</label>
-                <label id='score-label' htmlFor="text">Modstanders score: {enemyScore}</label>
+                <label id='score-label2' htmlFor="text">Modstanders score: {enemyScore}</label>
                 <div className='reset-button'>
                     <input onClick={resetscore} id='reset-button2' type='button' value={"Reset score "} />
                 </div>
